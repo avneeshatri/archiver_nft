@@ -1,0 +1,17 @@
+......
+
+contract MyNFT is ERC721Full, ERC721Mintable {
+    constructor() ERC721Full("MyNFT", "MNFT") public {
+  }
+
+
+  function mintToken(address to, uint256 tokenId, string uri) public {
+      mint(to, tokenId);
+      require(_exists(tokenId));
+      _setTokenURI(tokenId, uri);
+  }
+  function burnToken(address owner, uint256 tokenId) public {
+      _burn(owner, tokenId);
+  }
+
+}
